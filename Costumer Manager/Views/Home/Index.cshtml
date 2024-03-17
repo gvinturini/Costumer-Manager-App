@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model HomeViewModel;
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <h3>List of all registered Customers/users</h3>
+    <p>
+        Below you can find all registered users or customers. To update or view or delete a customer
+        use the associated Button provided.
+    </p>
+
+    <table class="customer-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Job Title</th>
+                <th>Register Date</th>
+                <th>Birthday</th>
+                <th>Update</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var customer in Model.CustomerList)
+            {
+                <tr>
+                    <td>@customer.ID</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.Phone</td>
+                    <td>@customer.JobTitle</td>
+                    <td>@customer.CreatedDate</td>
+                    <td>@customer.Birthday</td>
+                    <td class="danger">
+                        @Html.ActionLink("Update", "UpdateCustomer", "Customer", new { id = customer.ID}, null)
+                    </td>
+                    <td class="green">
+                        @Html.ActionLink("View", "ViewCustomerProfile", "Customer", new { id = customer.ID }, null)
+                    </td>
+                    <td class="red" id="@customer.ID">Delete</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
