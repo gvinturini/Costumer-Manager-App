@@ -1,32 +1,44 @@
+using Costumer_Manager.Data.DataModels;
 using Costumer_Manager.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Costumer_Manager.Controllers
+namespace Costumer_Manager.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly ILogger<HomeController> _logger;
+
+    public HomeController(ILogger<HomeController> logger)
     {
-        private readonly ILogger<HomeController> _logger;
+        _logger = logger;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+    public IActionResult Index()
+    {
+        List<CustomerModel> list = new();
+        CustomerModel customer = new CustomerModel() 
+        { 
+            Name = "Giovanni",
+            Email = "teste@teste.com",
+            Password = "password"
+        };
+        list.Add(customer);
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        HomeViewModel homeViewModel = new HomeViewModel();
+        homeViewModel.CustomerList = list;
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        return View(homeViewModel);
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

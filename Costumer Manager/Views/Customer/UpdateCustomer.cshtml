@@ -3,3 +3,73 @@
 *@
 @{
 }
+@model CustomerViewModel
+<section>
+    <h3>Here you can update the customer's data.</h3>
+
+    <form method="post" action="customer/updateCustomer" enctype="application/x-www-form-urlencoded">
+        <div>
+            <div>
+                <label>Full Name *</label>
+            </div>
+            <input type="text" name="Name" value="@Model.Name" required maxlength="50"/>
+        </div>
+        <div>
+            <div>
+                <label>Email *</label>
+            </div>
+            <input type="email" name="Email" value="@Model.Email" required maxlength="100" />
+        </div>
+        <div>
+            <div>
+                <label>Address *</label>
+            </div>
+            <input type="text" name="Address" value="@Model.Address" maxlength="100" />
+        </div>
+        <div>
+            <div>
+                <label>Job Title *</label>
+            </div>
+            <input type="text" name="JobTitle" value="@Model.JobTitle" maxlength="50" />
+        </div>
+        <div>
+            <div>
+                <label>Phone Number *</label>
+            </div>
+            <input type="text" name="Phone" value="@Model.Phone" maxlength="30" />
+        </div>
+        <div>
+            <div>
+                <label>Password *</label>
+            </div>
+            <input type="password" name="Password" value="@Model.Password" required maxlength="20" />
+        </div>
+        <div>
+            <div>
+                <label>Is Active *</label>
+            </div>
+            <select name="IsActive">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div>
+            <div>
+                <label>Is Admin *</label>
+            </div>
+            <select name="IsAdmin">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div>
+            <div>
+                <label>Birthday *</label>
+            </div>
+            <input type="datetime" name="Birthday" value="@Model.Birthday"/>
+        </div>
+        <div>
+            <input type="submit" value="Update"/>
+        </div>
+    </form>
+</section>
