@@ -13,7 +13,6 @@ namespace Costumer_Manager.Controllers
             return View();
         }
 
-        // GET: CustomerController/NewCustomer
         public ActionResult NewCustomer()
         {
             return View();
