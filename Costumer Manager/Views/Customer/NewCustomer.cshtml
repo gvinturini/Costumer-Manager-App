@@ -2,74 +2,78 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "New Customer";
 }
+
 @model CustomerViewModel
 <section>
     <h3>Here you can create a new customer.</h3>
 
-    <form method="post" action="customer/NewCustomer" enctype="application/x-www-form-urlencoded">
-        <div>
+    <section class="form-holder">
+        <form method="post" action="customer/NewCustomer" enctype="application/x-www-form-urlencoded">
             <div>
-                <label>Full Name *</label>
+                <div class="lbl">
+                    <label>Full Name *</label>
+                </div>
+                <input type="text" name="Name" required maxlength="50" />
             </div>
-            <input type="text" name="Name" required maxlength="50" />
-        </div>
-        <div>
             <div>
-                <label>Email *</label>
+                <div class="lbl">
+                    <label>Email *</label>
+                </div>
+                <input type="email" name="Email" required maxlength="100" />
             </div>
-            <input type="email" name="Email" required maxlength="100" />
-        </div>
-        <div>
             <div>
-                <label>Address *</label>
+                <div class="lbl">
+                    <label>Address *</label>
+                </div>
+                <input type="text" name="Address" maxlength="100" />
             </div>
-            <input type="text" name="Address" maxlength="100" />
-        </div>
-        <div>
             <div>
-                <label>Job Title *</label>
+                <div class="lbl">
+                    <label>Job Title *</label>
+                </div>
+                <input type="text" name="JobTitle" maxlength="50" />
             </div>
-            <input type="text" name="JobTitle" maxlength="50" />
-        </div>
-        <div>
             <div>
-                <label>Phone Number *</label>
+                <div class="lbl">
+                    <label>Phone Number *</label>
+                </div>
+                <input type="text" name="Phone" maxlength="30" />
             </div>
-            <input type="text" name="Phone" maxlength="30" />
-        </div>
-        <div>
             <div>
-                <label>Password *</label>
+                <div class="lbl">
+                    <label>Password *</label>
+                </div>
+                <input type="password" name="Password" required maxlength="20" />
             </div>
-            <input type="password" name="Password" required maxlength="20" />
-        </div>
-        <div>
             <div>
-                <label>Is Active *</label>
+                <div class="lbl">
+                    <label>Is Active *</label>
+                </div>
+                <select name="IsActive">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
             </div>
-            <select name="IsActive">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-        </div>
-        <div>
             <div>
-                <label>Is Admin *</label>
+                <div class="lbl">
+                    <label>Is Admin *</label>
+                </div>
+                <select name="IsAdmin">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
             </div>
-            <select name="IsAdmin">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-        </div>
-        <div>
             <div>
-                <label>Birthday *</label>
+                <div class="lbl">
+                    <label>Birthday *</label>
+                </div>
+                <input type="datetime" name="Birthday" />
             </div>
-            <input type="datetime" name="Birthday" />
-        </div>
-        <div>
-            <input type="submit" value="Add" />
-        </div>
-    </form>
+            <div class="submit">
+                <input type="submit" value="Add" />
+            </div>
+        </form>
+    </section>
 </section>

@@ -88,6 +88,61 @@ a.logo {
     background: green;
 }
 
+.form-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form {
+    min-width: 300px;
+    max-width: 70%;
+}
+
+form label, form .lbl {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+form input {
+    width: 100%;
+    padding: 3px;
+    border: 1px solid aqua;
+    border-radius: 5px;
+    margin-top: 7px;
+}
+
+form input:focus, form select:focus {
+    outline: 1px solid gold;
+    border: none;
+}
+
+form .submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+form input[type="submit"] {
+    background: green;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    float: right;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+form select {
+    margin-top: 7px;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid aqua;
+    border-radius: 5px;
+}
+
 .hidden {
     display: none;
 }
