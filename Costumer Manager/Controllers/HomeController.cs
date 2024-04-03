@@ -21,7 +21,8 @@ public class HomeController : Controller
         { 
             Name = "Giovanni",
             Email = "teste@teste.com",
-            Password = "password"
+            Password = "password",
+            ID = 1
         };
         list.Add(customer);
 

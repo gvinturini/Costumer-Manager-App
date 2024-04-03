@@ -12,9 +12,9 @@ namespace Costumer_Manager.Models
         public string? JobTitle { get; set; }
         public string? Phone { get; set; }
         public string Password { get; set; }
-        public bool IsActive { get; set; } = true;
-        public bool IsAdmin { get; set; } = false;
+        public bool IsActive { get; set; }
+        public bool IsAdmin { get; set; }
         public DateTime? Birthday { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; }
     }
 }

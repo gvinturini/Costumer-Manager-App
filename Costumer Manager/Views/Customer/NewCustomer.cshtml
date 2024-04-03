@@ -3,14 +3,21 @@
 *@
 @{
     ViewData["Title"] = "New Customer";
+    String error = ViewBag.ErrorMessage;
 }
 
 @model CustomerViewModel
 <section>
     <h3>Here you can create a new customer.</h3>
 
+    @if(!string.IsNullOrEmpty(error))
+    {
+        <p class="red">
+            @error
+        </p>    
+    }
     <section class="form-holder">
-        <form method="post" action="customer/NewCustomer" enctype="application/x-www-form-urlencoded">
+        <form method="post" asp-action="NewCustomer" asp-controller="Customer" enctype="application/x-www-form-urlencoded">
             <div>
                 <div class="lbl">
                     <label>Full Name *</label>
@@ -51,7 +58,7 @@
                 <div class="lbl">
                     <label>Is Active *</label>
                 </div>
-                <select name="IsActive">
+                <select name="IsActive" asp-for="IsActive">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
@@ -60,7 +67,7 @@
                 <div class="lbl">
                     <label>Is Admin *</label>
                 </div>
-                <select name="IsAdmin">
+                <select name="IsAdmin" asp-for="IsAdmin">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
@@ -69,7 +76,7 @@
                 <div class="lbl">
                     <label>Birthday *</label>
                 </div>
-                <input type="datetime" name="Birthday" />
+                <input type="date" name="Birthday" />
             </div>
             <div class="submit">
                 <input type="submit" value="Add" />

@@ -52,7 +52,7 @@
                 <div class="lbl">
                     <label>Is Active *</label>
                 </div>
-                <select name="IsActive">
+                <select name="IsActive" asp-for="IsActive">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
@@ -61,7 +61,7 @@
                 <div class="lbl">
                     <label>Is Admin *</label>
                 </div>
-                <select name="IsAdmin">
+                <select name="IsAdmin" asp-for="IsAdmin">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
@@ -70,7 +70,7 @@
                 <div class="lbl">
                     <label>Birthday *</label>
                 </div>
-                <input type="datetime" name="Birthday" value="@Model.Birthday" />
+                <input type="date" name="Birthday" value="@Model.Birthday" />
             </div>
             <div>
                 <input type="submit" value="Update" />
