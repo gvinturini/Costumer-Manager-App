@@ -15,19 +15,37 @@ namespace Costumer_Manager.Controllers
         // GET: CustomerController/ViewCustomerProfile/5
         public ActionResult ViewCustomerProfile(int id)
         {
-            CustomerViewModel viewModel = new CustomerViewModel()
+            CustomerModel customer = _context.Customers.Where(e =>e.ID==id).FirstOrDefault();
+            CustomerViewModel viewModel = new CustomerViewModel();
+            
+            if (customer != null)
             {
-                Name = "Tom Cruise",
-                Email = "tom.cruise@cruise.com",
-                Phone = "+1 111 111 111",
-                Address = "NYC, US",
-                IsActive = true,
-                IsAdmin = false,
-                Birthday = new DateTime(1975, 05, 29, 00, 30, 45),
-                ID = id,
-                JobTitle = "Actor"
-            };
-            return View();
+                viewModel.Name =  customer.Name;
+                viewModel.Email = customer.Email;
+                viewModel.Phone = customer.Phone;
+                viewModel.Address = customer.Address;
+                viewModel.JobTitle = customer.JobTitle;
+                viewModel.ID = customer.ID;
+                viewModel.CreatedDate = customer.CreatedDate;
+                viewModel.IsAdmin = customer.IsAdmin;
+                viewModel.IsActive = customer.IsActive;
+            }
+            else
+            {
+                viewModel = new CustomerViewModel()
+                {
+                    Name = "Tom Cruise",
+                    Email = "tom.cruise@cruise.com",
+                    Phone = "+1 111 111 111",
+                    Address = "NYC, US",
+                    IsActive = true,
+                    IsAdmin = false,
+                    Birthday = new DateTime(1975, 05, 29, 00, 30, 45),
+                    ID = id,
+                    JobTitle = "Actor"
+                };
+            }
+            return View(viewModel);
         }
 
         public ActionResult NewCustomer()
@@ -61,19 +79,9 @@ namespace Costumer_Manager.Controllers
         // GET: CustomerController/UpdateCustomer/5
         public ActionResult UpdateCustomer(int id)
         {
-            CustomerViewModel viewModel = new CustomerViewModel()
-            {
-                Name = "Tom Cruise",
-                Email = "tom.cruise@cruise.com",
-                Phone = "+1 111 111 111",
-                Address = "NYC, US",
-                IsActive = true,
-                IsAdmin = false,
-                Birthday = new DateTime(1975, 05, 29, 00, 30, 45),
-                ID = id,
-                JobTitle = "Actor"
-            };
-            return View(viewModel);
+
+            CustomerModel customer = _context.Customers.FirstOrDefault(x => x.ID == id);
+            return View(customer);
         }
 
         // POST: CustomerController/UpdateCustomer/5
@@ -83,10 +91,18 @@ namespace Costumer_Manager.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                CustomerModel customerToUpdate = _context.Customers.FirstOrDefault(y => y.ID == customer.ID);
+                if (customerToUpdate != null) 
+                {
+                    customerToUpdate = customer;
+                    customerToUpdate.ModifiedDate = DateTime.Now;
+                    _context.SaveChanges();
+                }
+                return Redirect("/");
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View();
             }
         }

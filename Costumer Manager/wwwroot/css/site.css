@@ -16,6 +16,10 @@ body {
     padding: 5px;
 }
 
+.customer-table td {
+    text-align: center;
+}
+
 .hdr-top {
     padding: 15px;
     background: #005050;
@@ -141,6 +145,19 @@ form select {
     padding: 5px;
     border: 1px solid aqua;
     border-radius: 5px;
+}
+
+.lbl {
+    font-weight: bold;
+}
+
+.profile-hdr {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.form div {
+    margin-top: 10px;
 }
 
 .hidden {

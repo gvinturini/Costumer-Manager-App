@@ -43,8 +43,13 @@
                     <td>@customer.Address</td>
                     <td>@customer.Phone</td>
                     <td>@customer.JobTitle</td>
-                    <td>@customer.CreatedDate</td>
-                    <td>@customer.Birthday</td>
+                    <td>@customer.CreatedDate.ToString().Split(" ")[0]</td>
+                    <td>
+                        @if (customer.Birthday != null)
+                        {
+                            @customer.Birthday.ToString().Split(" ")[0];
+                        }
+                    </td>
                     <td class="danger">
                         @Html.ActionLink("Update", "UpdateCustomer", "Customer", new { id = customer.ID}, null)
                     </td>

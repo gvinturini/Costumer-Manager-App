@@ -14,6 +14,7 @@
             <div class="profile-hdr">
                 @Model.Name
             </div>
+            <hr />
             <div>
                 @Model.Email
             <div>
@@ -49,13 +50,13 @@
                 <div class="lbl">
                     <label>Birthday</label>
                 </div>
-                <div>@Model.Birthday</div>
+                <div>@Model.Birthday.ToString().Split(" ")[0]</div>
             </div>
             <div>
                 <div class="lbl">
                     <label>Register Date</label>
                 </div>
-                <div>@Model.CreatedDate</div>
+                    <div>@Model.CreatedDate.ToString().Split(" ")[0]</div>
             </div>
         </div>
     </section>

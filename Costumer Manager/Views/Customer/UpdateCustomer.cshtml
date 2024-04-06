@@ -4,11 +4,20 @@
 
 @{
     ViewData["Title"] = "Update Customer";
+    String error = ViewBag.ErrorMessage;
 }
-
-@model CustomerViewModel
+@using Costumer_Manager.Data.DataModels;
+@model CustomerModel
 <section>
     <h3>Here you can update the customer's data.</h3>
+
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <p class="red">
+            @error
+        </p>
+    }
+
     <section class="form-holder">
         <form method="post" action="customer/updateCustomer" enctype="application/x-www-form-urlencoded">
             <input class="hidden" type="number" name="ID" value="@Model.ID" />
@@ -26,13 +35,13 @@
             </div>
             <div>
                 <div class="lbl">
-                    <label>Address *</label>
+                    <label>Address</label>
                 </div>
                 <input type="text" name="Address" value="@Model.Address" maxlength="100" />
             </div>
             <div>
                 <div class="lbl">
-                    <label>Job Title *</label>
+                    <label>Job Title</label>
                 </div>
                 <input type="text" name="JobTitle" value="@Model.JobTitle" maxlength="50" />
             </div>
@@ -68,7 +77,7 @@
             </div>
             <div>
                 <div class="lbl">
-                    <label>Birthday *</label>
+                    <label>Birthday</label>
                 </div>
                 <input type="date" name="Birthday" value="@Model.Birthday" />
             </div>
