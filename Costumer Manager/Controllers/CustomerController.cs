@@ -94,7 +94,44 @@ namespace Costumer_Manager.Controllers
                 CustomerModel customerToUpdate = _context.Customers.FirstOrDefault(y => y.ID == customer.ID);
                 if (customerToUpdate != null) 
                 {
-                    customerToUpdate = customer;
+                    if (customerToUpdate.Name != customer.Name)
+                    {
+                        customerToUpdate.Name = customer.Name;
+                    }
+                    if (customerToUpdate.Email != customer.Email)
+                    {
+                        customerToUpdate.Email = customer.Email;
+                    }
+                    if (customerToUpdate.Address != customer.Address)
+                    {
+                        customerToUpdate.Address = customer.Address;
+                    }
+                    if (customerToUpdate.Phone != customer.Phone)
+                    {
+                        customerToUpdate.Phone = customer.Phone;
+                    }
+                    if (customerToUpdate.JobTitle != customer.JobTitle)
+                    {
+                        customerToUpdate.JobTitle = customer.JobTitle;
+                    }
+                    if (customerToUpdate.Password != customer.Password)
+                    {
+                        customerToUpdate.Password = customer.Password;
+                    }
+                    if (customerToUpdate.IsActive != customer.IsActive)
+                    {
+                        customerToUpdate.IsActive = customer.IsActive;
+                    }
+                    if (customerToUpdate.IsAdmin != customer.IsAdmin)
+                    {
+                        customerToUpdate.IsAdmin = customer.IsAdmin;
+                    }
+                    if (customerToUpdate.Birthday != customer.Birthday)
+                    {
+                        customerToUpdate.Birthday = customer.Birthday;
+                    }
+
+                    customerToUpdate.Name = customer.Name;
                     customerToUpdate.ModifiedDate = DateTime.Now;
                     _context.SaveChanges();
                 }

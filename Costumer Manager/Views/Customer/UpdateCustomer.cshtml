@@ -5,6 +5,14 @@
 @{
     ViewData["Title"] = "Update Customer";
     String error = ViewBag.ErrorMessage;
+    String date_ = "";
+    if (Model.Birthday != null)
+    {
+        int month_ = Model.Birthday.Value.Month;
+        int day_ = Model.Birthday.Value.Day;
+        date_ = Model.Birthday.Value.Year + "-" + (month_ > 9 ? month_ : "0" + month_) + "-" + (day_ > 9 ? day_ : "0" + day_);
+    }
+    
 }
 @using Costumer_Manager.Data.DataModels;
 @model CustomerModel
@@ -19,7 +27,7 @@
     }
 
     <section class="form-holder">
-        <form method="post" action="customer/updateCustomer" enctype="application/x-www-form-urlencoded">
+        <form method="post" asp-action="UpdateCustomer" asp-controller="Customer" enctype="application/x-www-form-urlencoded">
             <input class="hidden" type="number" name="ID" value="@Model.ID" />
             <div>
                 <div class="lbl">
@@ -79,7 +87,7 @@
                 <div class="lbl">
                     <label>Birthday</label>
                 </div>
-                <input type="date" name="Birthday" value="@Model.Birthday" />
+                <input type="date" name="Birthday" value="@date_" />
             </div>
             <div>
                 <input type="submit" value="Update" />
