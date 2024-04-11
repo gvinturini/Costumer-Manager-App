@@ -1,10 +1,23 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+
+@{
     ViewData["Title"] = "Home Page";
+    String error = ViewBag.ErrorMessage;
+
+    var requestToken = Antiforgery.GetAndStoreTokens(Context).RequestToken;
 }
 
 @model HomeViewModel;
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <p class="red">
+            @error
+        </p>
+    }
 
     <div class="register-btn">
         <a href="/Customer/NewCustomer">Register</a>
@@ -56,7 +69,7 @@
                     <td class="green">
                         @Html.ActionLink("View", "ViewCustomerProfile", "Customer", new { id = customer.ID }, null)
                     </td>
-                    <td class="red" id="@customer.ID">Delete</td>
+                    <td class="red" id="@customer.ID" data_token="@requestToken" onclick="deleteItem(event)">Delete</td>
                 </tr>
             }
         </tbody>

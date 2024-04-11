@@ -21,6 +21,8 @@ public class CustomerModel
     public string Password { get; set; }
     public bool IsActive { get; set; } = true;
     public bool IsAdmin { get; set; } = false;
+    public bool IsDeleted { get; set; } = false;
+
     [Column(TypeName = "datetime")]
     public DateTime? Birthday { get; set; }
     [Column(TypeName = "datetime")]

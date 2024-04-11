@@ -19,7 +19,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         List<CustomerModel> list = new();
-        list.AddRange(_context.Customers.Where(e => e.IsActive));
+        list.AddRange(_context.Customers.Where(e => e.IsActive && e.IsDeleted));
 
         HomeViewModel homeViewModel = new HomeViewModel();
         homeViewModel.CustomerList = list;

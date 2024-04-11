@@ -145,17 +145,31 @@ namespace Costumer_Manager.Controllers
         }
 
         // POST: CustomerController/Delete/5
-        [HttpPost]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
+
             try
             {
-                return RedirectToAction(nameof(Index));
+                CustomerModel customer = _context.Customers.FirstOrDefault(x=> x.ID == id);
+                if (customer != null)
+                {
+                    //_context.Customers.Remove(customer);
+                    customer.IsDeleted = true;
+                    _context.SaveChanges();
+                }
+
+                RequestMsg requestMsg = new RequestMsg();
+                requestMsg.Message = "Deleted Successfully";
+                return Json(requestMsg);
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ViewBag.ErrorMessage = ex.Message;
+                RequestMsg requestMsg = new RequestMsg();
+                requestMsg.Message = "Could not delete the item";
+                return Json(requestMsg);
             }
         }
     }
